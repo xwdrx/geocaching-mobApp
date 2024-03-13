@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Geocaching.Pages.AppTabbedPage"
+             xmlns:pages="clr-namespace:Geocaching.Pages"
+             xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+             xmlns:local="clr-namespace:Geocaching"
+             Title="AppTabbedPage">
+
+    <TabbedPage.Children>
+        <pages:ChatPage Title="chat" IconImageSource="chat.svg"></pages:ChatPage>
+        <pages:FavoritesPage Title="ulubione" IconImageSource="save.svg"></pages:FavoritesPage>
+        <pages:ProfilePage Title="Profil"  IconImageSource="profile.svg"></pages:ProfilePage>
+        <pages:MapTypesPageCode Title="mapa" IconImageSource="map.svg"></pages:MapTypesPageCode>
+    </TabbedPage.Children>
+   
+</TabbedPage>

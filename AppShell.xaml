@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Geocaching.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Geocaching.Pages"
+    xmlns:local="clr-namespace:Geocaching"
+    Shell.FlyoutBehavior="Disabled">
+
+    <TabBar>
+
+        <ShellContent 
+            Title="Profil"
+            ContentTemplate="{DataTemplate pages:ProfilePage}"
+            Icon="profile.svg"/>
+
+        <ShellContent
+            Title="Chat"
+            ContentTemplate="{DataTemplate pages:ChatPage}"
+            Icon="chat.svg"/>
+
+        <ShellContent
+                Title="Mapa"
+                ContentTemplate="{DataTemplate pages:MapPage}"
+                Icon="map.svg"/>
+        <ShellContent
+            Title="Ulubione"
+            ContentTemplate="{DataTemplate pages:FavoritesPage}"
+            Icon="save.svg"/>
+ 
+
+    </TabBar>
+
+</Shell>
