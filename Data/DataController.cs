@@ -12,8 +12,8 @@ namespace Geocaching.Data
 {
     public class DataController
     {
-        public readonly string consumer_Key = "JLUJs7AtyRzM2XgYtKWd";
-        public readonly string consumer_Secret = "kn6A7NQnnZCbDkfW6S9B4axAesvQX3BPwyKAe8GJ";
+        public readonly string consumer_Key = "";
+        public readonly string consumer_Secret = "";
         public readonly string latitiude = "50.047486";
         public readonly string longitude = "19.927897";
         public readonly string baseUrl = "https://opencaching.pl/okapi/services/";
@@ -33,7 +33,7 @@ namespace Geocaching.Data
 
             List<string> keys2 = new List<string>();
 
-            var response = await client.GetAsync($"attrs/attribute_index?&consumer_key=JLUJs7AtyRzM2XgYtKWd");
+            var response = await client.GetAsync($"attrs/attribute_index?&consumer_key=");
 
 
             if (response.IsSuccessStatusCode)
@@ -66,7 +66,7 @@ namespace Geocaching.Data
         public async static Task<List<string>> GetInformationAboutGeocacheID()
         {
             var tasks = new List<string>();
-            string url = $"caches/search/all?limit=500&consumer_key=JLUJs7AtyRzM2XgYtKWd";
+            string url = $"caches/search/all?limit=500&consumer_key=";
             var response = await client.GetAsync(url);
 
             if (response.IsSuccessStatusCode)
@@ -90,13 +90,13 @@ namespace Geocaching.Data
 
         }
 
-        public async static Task<List<string>> GetInformationAboutNearestGeocacheID()       //max 500
+        public async static Task<List<string>> GetInformationAboutNearestGeocacheID()       
         {
             var tasks = new List<string>();
             var myLocation = await Geolocation.GetLocationAsync();
 
 
-            var response = await client.GetAsync($"caches/search/nearest?center={myLocation.Latitude}|{myLocation.Longitude}&limit=100&consumer_key=JLUJs7AtyRzM2XgYtKWd");
+            var response = await client.GetAsync($"caches/search/nearest?center={myLocation.Latitude}|{myLocation.Longitude}&limit=100&consumer_key=");
 
             if (response.IsSuccessStatusCode)
             {
@@ -119,7 +119,7 @@ namespace Geocaching.Data
 
         }
 
-        public async static Task<List<Geocache>> GetInformationAboutNearestGeocache()       //ten jest ok, ale nie robi tych co descritions nie jest poprawione
+        public async static Task<List<Geocache>> GetInformationAboutNearestGeocache()       
 
         {
             List<Geocache> geocaches = new List<Geocache>();
@@ -133,7 +133,7 @@ namespace Geocaching.Data
                 string url = $"caches/geocache?cache_code={id}&fields=short_descriptions|country2|region|images|code|name" +
                                 $"|location|type|status|descriptions|protection_areas|difficulty|terrain|trip_time|trip_distance|rating|" +
                                 $"recommendations|rating_votes|alt_wpts|last_found|last_modified|date_created|date_hidden|attr_acodes|attrnames" +
-                                $"&consumer_key=JLUJs7AtyRzM2XgYtKWd";
+                                $"&consumer_key=";
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
@@ -175,7 +175,7 @@ namespace Geocaching.Data
 
         }
 
-        public async static Task<List<Geocache>> GetInformationAboutGeocache()       //ten jest ok, ale nie robi tych co descritions nie jest poprawione
+        public async static Task<List<Geocache>> GetInformationAboutGeocache()       
 
         {
             List<Geocache> geocaches = new List<Geocache>();
@@ -223,7 +223,7 @@ namespace Geocaching.Data
                     dynJson.longitude = Convert.ToDouble(location[1]);
                     geocaches.Add(dynJson);
                 }
-                catch (Exception ex) { Console.WriteLine(ex.Message + "kod: " + ids[idx]); }
+                catch (Exception ex) { Console.WriteLine(ex.Message + "code: " + ids[idx]); }
                 idx++;
 
             }
@@ -241,7 +241,7 @@ namespace Geocaching.Data
 
             foreach (var id in ids)
             {
-                string url = $"attrs/attribute?acode={id}&fields=acode|name|names|descriptions|gc_equivs|local_icon_url&langpref=pl&consumer_key=JLUJs7AtyRzM2XgYtKWd";
+                string url = $"attrs/attribute?acode={id}&fields=acode|name|names|descriptions|gc_equivs|local_icon_url&langpref=pl&consumer_key=";
                 var response = await client.GetAsync(url);
                 if (response.IsSuccessStatusCode)
                 {
