@@ -25,27 +25,12 @@ namespace Geocaching.Pages
                 IsZoomEnabled = true
             };
               PinList(map);
-          //  Content = map;
         }
         public async Task PinList(Map map)
         {
 
             List<Geocache> geocaches = await DataController.GetInformationAboutNearestGeocache();
-            //List<Pin> pins = new List<Pin>();
-            //Pin pint = new Pin
-            //{
-            //    Label = "test",
-            //    MarkerId = "123",
-            //    Address = "Testowy",
-
-            //    Type = PinType.Place,
-            //    Location = new Location(50.047486, 19.927897)
-
-            //};
-
-
-
-            //map.Pins.Add(pint);
+         
             foreach (var geocache in geocaches)
             {
                 var img = ImageSource.FromUri(new Uri("https://pics.freeicons.io/uploads/icons/png/13433801461623323164-64.png"));
@@ -89,11 +74,9 @@ namespace Geocaching.Pages
                     Map = map
                 };
 
-                //pins.Add(pin);
                 map.Pins.Add(customPin);
             }
             Content = map;
-            //map.Pins.Add(pins);
 
         }
 
